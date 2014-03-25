@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    #listen 443 ssl;
+    #ssl_certificate      /etc/ssl/certs/chq_server.crt;
+    #ssl_certificate_key  /etc/ssl/certs/chq_server.key;
+
+    location / {
+        proxy_pass http://SERVICE_ADDR;
+    }
+}
