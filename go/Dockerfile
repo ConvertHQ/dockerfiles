@@ -18,5 +18,7 @@ RUN apt-get install -y git mercurial bzr
 WORKDIR /usr/local/share
 RUN hg clone -u release https://code.google.com/p/go
 RUN cd go/src && ./make.bash
+RUN mkdir -p /go/src
+ENV GOPATH /go
 
-ENV PATH /usr/local/share/go/bin:/usr/bin:/usr/sbin
+ENV PATH /go/bin:/usr/local/share/go/bin:$PATH
