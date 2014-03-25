@@ -13,7 +13,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD default.base /etc/nginx/sites-available/default.base
 
 # HTTPS only
-EXPOSE 80
+EXPOSE 443
 
 # will run script that identifies port linked service is running on, and
 # creates appropriate nginx config
