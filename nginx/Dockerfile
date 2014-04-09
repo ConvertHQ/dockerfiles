@@ -1,4 +1,4 @@
-FROM ubuntu:precise
+FROM quay.io/incisively/base:latest
 MAINTAINER Edd Robinson github.com/e-dard
 
 # make sure the package repository is up to date
