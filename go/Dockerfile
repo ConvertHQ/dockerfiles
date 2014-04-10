@@ -1,8 +1,6 @@
 FROM quay.io/incisively/base:0.1
 MAINTAINER Edd Robinson github.com/e-dard
 
-# make sure the package repository is up to date
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y gcc libc6-dev libc6-dev-i386 python-software-properties
 
