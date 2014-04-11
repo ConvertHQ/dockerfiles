@@ -23,7 +23,7 @@ This container is designed to serve HTTPS requests to the
 
 
 A: static snippet file from /tags on the filesystem
-B: proxy-pass to a backend service (TODO)
+B: proxy-pass to a backend service
 
 ```
 
@@ -42,6 +42,28 @@ exist on the host system: `/path/to/tags/1234/iy.js`
 
 2. `/path/to/ssl/files`, which should contain the `.crt` and `.key` files for
 the SSL certificate you want to use.
+
+
+## Zero-downtime configuration changes from a remote container
+
+The `/etc/nginx` volume can be mounted by another container. This allows access
+to all of nginx's configuration files (including virtual hosts), plus an
+additional special file: `/etc/nginx/reload.sock`, which is a Unix socket.
+When you write to `reload.sock`, nginx will reload, picking up any
+configuration changes.
+
+### Example:
+
+Given a running `analytics-nginx` instance named `distracted_wozniak`:
+
+1. `docker run --volumes-from distracted_wozniak --rm -t -i ubuntu:precise bash`
+2. Make your config changes, e.g. create a new nginx host file
+   `/etc/nginx/sites-enabled/trashbat.conf`
+3. `nc -U /etc/nginx/reload.sock`
+
+The `analytics-nginx` container has now picked up the new configuration, and we
+can exit the container we created in these steps.
+
 
 ## boot2docker gotcha
 
