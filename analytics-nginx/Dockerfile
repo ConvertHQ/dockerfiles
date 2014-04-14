@@ -8,8 +8,10 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm /etc/nginx/sites-*/default
 RUN echo "" > /usr/share/nginx/www/index.html
 
+RUN mkdir /etc/nginx/locations
 ADD runner.sh /root/
-ADD tags.conf /etc/nginx/sites-enabled/
+ADD analytics.incisive.ly.conf /etc/nginx/sites-enabled/
+ADD tags.conf /etc/nginx/locations/
 
 VOLUME /etc/nginx
 VOLUME /tags
