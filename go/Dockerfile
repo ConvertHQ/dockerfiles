@@ -1,4 +1,4 @@
-FROM quay.io/incisively/base:0.1
+FROM quay.io/incisively/base:latest
 MAINTAINER Edd Robinson github.com/e-dard
 
 RUN apt-get update
@@ -12,9 +12,12 @@ RUN add-apt-repository -y ppa:bzr/ppa
 RUN apt-get update
 RUN apt-get install -y git mercurial bzr
 
-# Go 1.2
+# Go
 WORKDIR /usr/local/share
 RUN hg clone -u release https://code.google.com/p/go
+
+# Go 1.2 branch
+RUN hg checkout release-branch.go1.2
 RUN cd go/src && ./make.bash
 RUN mkdir -p /go/src
 ENV GOPATH /go

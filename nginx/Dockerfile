@@ -1,4 +1,4 @@
-FROM quay.io/incisively/base:0.1
+FROM quay.io/incisively/base:latest
 MAINTAINER Edd Robinson github.com/e-dard
 
 # make sure the package repository is up to date
