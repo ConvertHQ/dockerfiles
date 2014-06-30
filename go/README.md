@@ -4,7 +4,7 @@ Provides a convenient base image for deploying Go applications.
 
 It provides the following:
  - `git`, `mercurial` and `bazaar`, so `go get` can fetch everything it needs;
- - The Go 1.2.1 environment for building your go apps within a container;
+ - The Go 1.2.x environment for building your go apps within a container;
  - a `GOPATH` set to `/go`.
 
 A simple Go service utilising `go/Dockerfile` might look something like
