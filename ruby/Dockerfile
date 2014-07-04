@@ -20,6 +20,11 @@ ONBUILD RUN gem install bundler
 RUN useradd -m -s /bin/bash app
 ONBUILD WORKDIR /home/app
 
+# Install any OS-level deps, e.g., required for native extensions
+ONBUILD ADD .apt-packages /tmp/
+ONBUILD RUN [ ! -f /tmp/.apt-packages ] || apt-get update
+ONBUILD RUN [ ! -f /tmp/.apt-packages ] || apt-get install $(cat /tmp/.apt-packages)
+
 # Install dependencies
 ONBUILD ADD Gemfile /home/app/
 ONBUILD ADD Gemfile.lock /home/app/
