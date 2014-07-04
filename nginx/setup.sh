@@ -7,4 +7,5 @@ ADDR=`echo $SERVICE_PORT | grep -P -o '(?<=tcp://).+'`
 # inject port of linked service
 sed s/SERVICE_ADDR/$ADDR/ /etc/nginx/sites-available/default.base > /etc/nginx/sites-available/default
 
+mkdir -p /var/log/nginx
 nginx
