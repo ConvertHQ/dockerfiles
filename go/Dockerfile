@@ -18,7 +18,7 @@ RUN hg clone -u release https://code.google.com/p/go
 
 # Go 1.2 branch
 RUN hg checkout release-branch.go1.2
-RUN cd go/src && ./make.bash
+RUN cd go/src && ./all.bash
 RUN mkdir -p /go/src
 ENV GOPATH /go
 
