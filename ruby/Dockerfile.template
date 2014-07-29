@@ -12,9 +12,8 @@ ENV CONFIGURE_OPTS --disable-install-doc
 RUN echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 
 # Install specified Ruby version
-ONBUILD ADD .ruby-version /tmp/
-ONBUILD RUN ruby-build `cat /tmp/.ruby-version` /usr/local
-ONBUILD RUN gem install bundler
+RUN ruby-build RUBY_VERSION /usr/local
+RUN gem install bundler
 
 # Create application user
 RUN useradd -m -s /bin/bash app
