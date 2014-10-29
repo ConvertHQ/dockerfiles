@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y git mercurial bzr
 WORKDIR /usr/local/share
 RUN hg clone -u release https://code.google.com/p/go
 
-# Go 1.2 branch
-RUN cd go && hg checkout release-branch.go1.2
+# Go 1.3 branch
+RUN cd go && hg checkout release-branch.go1.3
 RUN cd go/src && ./all.bash
 
 ENV GOPATH /go
