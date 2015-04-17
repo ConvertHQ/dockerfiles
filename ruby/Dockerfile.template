@@ -2,7 +2,8 @@ FROM quay.io/incisively/base:latest
 MAINTAINER Richard Worrall github.com/skinnyfit
 
 RUN apt-get update && apt-get install -qy curl ca-certificates git-core \
-  build-essential autoconf libssl-dev libreadline6-dev libpq-dev
+  build-essential autoconf libssl-dev libreadline6-dev libpq-dev bison \
+  libyaml-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 
 # Install ruby-build & configure
 RUN git clone https://github.com/sstephenson/ruby-build.git /tmp/ruby-build
